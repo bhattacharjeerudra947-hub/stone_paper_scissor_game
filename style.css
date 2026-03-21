@@ -29,11 +29,11 @@ body {
     transform: translateY(-10px);
     visibility: hidden;
 
-    transition: all 0.25s ease;
+    transition: all 0.1s ease;
 }
 
 /* 🔥 THIS LINE DOES THE MAGIC */
-.setting-container:hover .settings-menu {
+.setting-container:hover .settings-menu {                 
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
@@ -41,6 +41,8 @@ body {
 
 /* menu items */
 .menu-item {
+    justify-content: center;
+
     display: flex;
     align-items: center;
     gap: 10px;
@@ -51,4 +53,37 @@ body {
 
 .menu-item:hover {
     background: #444;
+}
+.about {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+   
+}
+.link{
+    border-radius: 12px;
+    
+    
+
+
+    position: absolute;
+    align-content: center;
+    opacity: 0;
+    visibility: hidden;
+    left: 0;
+    top: 100%;
+    background-color: #2f2f2f;
+    display: flex;
+    transition: all 0.1s ease;
+    gap: 10px;
+}
+
+
+.about:hover .link {
+    justify-content: center;
+    
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-10px);
+    
 }

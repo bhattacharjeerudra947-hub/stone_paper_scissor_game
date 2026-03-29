@@ -18,15 +18,31 @@ slider.addEventListener('input',()=>{
     }
 });
 let pName="";
+let submit=false;
 const form = document.querySelector("form");
 form.addEventListener("submit",(e) =>{
     e.preventDefault();
+    submit=true;
+    
     pName=document.getElementById("playerName").value;
     console.log(pName);
 
 })
-const start=document.querySelector("gameStart");
+const start=document.querySelector(".gameStart");
+
 start.addEventListener("click",()=>{
-    document.querySelector("homepage").style.display="none";
-    document.querySelector("gameContainer").style.display="block";
+    start.addEventListener("click",()=>{
+    pName=document.getElementById("playerName").value;
+    if(pName ==="" || submit===false){
+        alert("enter the the name first and submit the name first ");
+        return ;
+    }
+    else{
+        document.querySelector(".homepage").style.display="none";
+        document.querySelector(".gameContainer").style.display="block";
+        document.querySelector(".welcome").innerText=`welcome ${pName}😁`;
+    }
+    })
+    
+    
 })

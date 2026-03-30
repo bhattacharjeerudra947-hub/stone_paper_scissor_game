@@ -32,19 +32,19 @@ const start=document.querySelector(".gameStart");
 
 
 start.addEventListener("click",()=>{
-    start.addEventListener("click",()=>{
     pName=document.getElementById("playerName").value;
     if(pName ==="" || submit===false){
         alert("enter the the name first and submit the name first ");
         return ;
     }
-    else{
-        document.querySelector(".homepage").style.display="none";
-        document.querySelector(".gameContainer").style.display="block";
+    
+    document.querySelector(".homepage").style.display="none";
+    document.querySelector(".gameContainer").style.display="block";
         
-        }
+    document.querySelector(".welcome").innerText = `welcome ${pName} 😁`;    //when i put this pout of if the name disappeared because 
+                                                                               //it It runs immediately when page loads at page load default value of pName is = "";
     })
-    document.querySelector(".welcome").innerText = `welcome ${pName} 😁`;
+    
 
     const choice = document.querySelector(".playerChoice");
 
@@ -52,14 +52,13 @@ start.addEventListener("click",()=>{
 
     choice.addEventListener("click", (e) => {
     const clicked = e.target.closest(".block__item");
+    const thinking = document.querySelector(".thinking");
 
     if (clicked) {
         pChoice = clicked.id;
+        choice.style.display="none";
+        thinking.style.display="block"
         
     }})
-    
 
 
-    
-    
-})

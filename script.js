@@ -30,6 +30,7 @@ form.addEventListener("submit",(e) =>{
 })
 const start=document.querySelector(".gameStart");
 
+
 start.addEventListener("click",()=>{
     start.addEventListener("click",()=>{
     pName=document.getElementById("playerName").value;
@@ -40,9 +41,25 @@ start.addEventListener("click",()=>{
     else{
         document.querySelector(".homepage").style.display="none";
         document.querySelector(".gameContainer").style.display="block";
-        document.querySelector(".welcome").innerText=`welcome ${pName}😁`;
-    }
+        
+        }
     })
+    document.querySelector(".welcome").innerText = `welcome ${pName} 😁`;
+
+    const choice = document.querySelector(".playerChoice");
+
+    let pChoice; // use let, not const
+
+    choice.addEventListener("click", (e) => {
+    const clicked = e.target.closest(".block__item");
+
+    if (clicked) {
+        pChoice = clicked.id;
+        
+    }})
+    
+
+
     
     
 })

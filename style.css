@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
 body {
     background-color: #666f50;
 }
@@ -226,8 +227,47 @@ body {
 }
 .thinking{
 
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    font-style: oblique;
+    text-align: center;
+    font-size: 30px;
+    transform: translateY(600%);
 }
+   
 .hidden {
     display: none;
+}
+.welcome {
+    font-style: oblique;
+    text-align: center;
+    font-size: 30px;
+    transform: translateY(50%);
+}
+
+.cursor {
+    position: relative;
+    display: inline-block;        /* change from relative to inline-block */
+    border-right: 2px solid rgba(255,255,255,.75);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+
+.typewriter-animation {
+    animation: 
+        typewriter 5s steps(50) 1s 1 forwards, 
+        blinkingCursor 500ms steps(50) infinite;
+}
+/* Animation */
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 17.5em; }    /* adjust this until it fits your text perfectly */
+}
+
+@keyframes blinkingCursor {
+    from { border-right-color: rgba(255,255,255,.75); }
+    to { border-right-color: transparent; }
 }

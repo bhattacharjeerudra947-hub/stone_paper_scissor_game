@@ -47,18 +47,24 @@ start.addEventListener("click",()=>{
     
 
     const choice = document.querySelector(".playerChoice");
+let pChoice;
 
-    let pChoice; // use let, not const
-
-    choice.addEventListener("click", (e) => {
+choice.addEventListener("click", (e) => {
     const clicked = e.target.closest(".block__item");
     const thinking = document.querySelector(".thinking");
+    const cursor = document.querySelector(".cursor");
 
     if (clicked) {
         pChoice = clicked.id;
-        choice.style.display="none";
-        thinking.style.display="block"
-        
-    }})
+        choice.style.display = "none";
 
+        // Show the thinking container
+        thinking.style.visibility = "visible";
+        thinking.style.opacity = "1";
 
+        // Reset the animation first (important trick)
+        cursor.classList.remove("typewriter-animation");
+        void cursor.offsetWidth;  // force reflow to reset animation
+        cursor.classList.add("typewriter-animation");
+    }
+});

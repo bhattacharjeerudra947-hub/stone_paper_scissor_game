@@ -177,6 +177,14 @@ body {
     left: 50%;
     transform: translateX(-50%);  /* center horizontally */
 }
+.playAgain{
+    display: none;
+    position: fixed;
+    bottom: 20%;      /* distance from bottom */
+    left: 50%;
+    transform: translateX(11.5em);  /* center horizontally */
+
+}
 .welcome{
     font-size: 30px;
     text-align: center;
@@ -259,7 +267,7 @@ body {
 .typewriter-animation {
     animation: 
         typewriter 5s steps(50) 1s 1 forwards, 
-        blinkingCursor 500ms steps(50) infinite;
+        blinkingCursor 5000ms steps(50) infinite;
 }
 /* Animation */
 @keyframes typewriter {
@@ -270,4 +278,27 @@ body {
 @keyframes blinkingCursor {
     from { border-right-color: rgba(255,255,255,.75); }
     to { border-right-color: transparent; }
+}
+.message{
+    text-align: center;
+    transform: translateY(50%);
+    font-size: 70px;
+
+}
+.emoji {
+    position: fixed;
+    font-size: 24px;
+    animation: fall 10s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
 }

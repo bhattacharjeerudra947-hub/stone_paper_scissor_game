@@ -25,7 +25,7 @@
                 
             </div>
             <div class="sound">
-            <audio id="bgAudio" src="game normal sounnd.mp3" autoplay loop></audio>
+            <audio id="bgAudio" src="rock-paper-scissors-nickelodeon.mp4" autoplay loop></audio>
             </div>
         </div>
 
@@ -61,7 +61,11 @@
                 <span>
                 <video autoplay loop muted>
                 <source src="rock-paper-scissors-nickelodeon.mp4" type="video/mp4">
+
                  </video>
+                 <audio class="winsound" src="gamewin.mp3" ></audio>
+                 <audio class="drawsound" src="drawsound.mp3" ></audio>
+                 <audio class="loosesound" src="loosesound.mp3" ></audio>
                 </span>
             </div>
         
@@ -82,7 +86,8 @@
         <div class="welcome"></div>
         
         <div class="newGame"><button>New Game</button></div>
-        <div class="scorecard"></div>
+        <div class="playAgain"><button>Play Again</button></div>
+        
         <div class="playerChoice">
             <div class ="text ">
                 <span> select one option </span>
@@ -113,9 +118,12 @@
         </div>
 
         
+        <div class="resultMsg">
+            <div class="message" id="winnerMessage"></div>
+            <div class="message" id="looseMessage"></div>
+            <div class="message" id="draw"></div>
+        </div>
         
-        <div class="winnerMessage"></div>
-        <div class="lossemessage"></div>
     </div>
 
         

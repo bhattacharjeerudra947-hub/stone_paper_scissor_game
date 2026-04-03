@@ -42,6 +42,9 @@ function getRandom() {
     const comChoices = ["rock", "paper", "scissor"];
     return comChoices[Math.floor(Math.random() * 3)];
 }
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // ✅ Fix 1: Generate computer choice ONCE and pass it to both functions
 function decision() {
@@ -59,27 +62,57 @@ function decision() {
     } else {
         looseMessage(comChoice);
     }
+    
 }
 
 function looseMessage(comChoice) {
-    document.querySelector(".lossemessage").innerText =
+    setTimeout(() => audio.play(), 20);
+    const audio=document.querySelector(".loosesound");
+    audio.play();
+    document.querySelector("#looseMessage").innerText =
         `Sorry, you lost! Computer chose ${comChoice}.`;
-    document.querySelector(".winnerMessage").innerText = "";
+    playagain();
+}
+function celebrate() {
+    for (let i = 0; i < 30; i++) {
+        const emoji = document.createElement("div");
+        emoji.classList.add("emoji");
+        emoji.innerText = "🎉";
+
+        emoji.style.left = Math.random() * 100 + "vw";
+        emoji.style.animationDuration = (Math.random() * 2 + 1) + "s";
+
+        document.body.appendChild(emoji);
+
+        setTimeout(() => {
+            emoji.remove();
+        }, 60000);
+    }
 }
 
 function winnerMessage(comChoice) {
-    document.querySelector(".winnerMessage").innerText =
-        `Congrats ${pName}, you won! Computer chose ${comChoice}.`;
-    document.querySelector(".lossemessage").innerText = "";
+    setTimeout(() => audio.play(), 20);
+    const audio=document.querySelector(".winsound");
+    audio.play();
+    document.querySelector("#winnerMessage").innerText =
+        `Congrats ${pName}, you won! Computer also chose ${comChoice}.`;
+        celebrate();
+    playagain();
 }
 
 function drawMessage(comChoice) {
-    document.querySelector(".winnerMessage").innerText = "";
-    document.querySelector(".lossemessage").innerText =
+    setTimeout(() => audio.play(), 20);
+    const audio=document.querySelector(".drawsound");
+    audio.play();
+    document.querySelector("#draw").innerText =
         `It's a draw! You both chose ${comChoice}.`;
+    playagain()
+}
+function playagain(){
+    document.querySelector(".playAgain").style.display="block";
 }
 
-choice.addEventListener("click", (e) => {
+choice.addEventListener("click", async (e) => {
     const clicked = e.target.closest(".block__item");
     const thinking = document.querySelector(".thinking");
     const cursor = document.querySelector(".cursor");
@@ -93,6 +126,35 @@ choice.addEventListener("click", (e) => {
         void cursor.offsetWidth;
         cursor.classList.add("typewriter-animation");
 
+        await delay(6000);   // wait 2 seconds
+        thinking.style.visibility = "hidden"; // optional
         decision();
     }
+});
+function resetBtn(){
+    document.querySelector("#winnerMessage").innerText = "";
+    document.querySelector("#looseMessage").innerText = "";
+    document.querySelector("#draw").innerText = "";
+    
+    document.querySelector(".playerChoice").style.display = "flex";
+    document.querySelector(".thinking").style.visibility = "hidden";
+    document.querySelector(".playAgain").style.display="none";
+}
+const playAgain=document.querySelector(".playAgain button");
+
+playAgain.addEventListener("click",()=>{
+    resetBtn();
+
+});
+const newGame=document.querySelector(".newGame button");
+newGame.addEventListener("click", () => {
+    resetBtn();
+
+    document.querySelector(".homepage").style.display = "flex";
+    document.querySelector(".gameContainer").style.display = "none";
+
+    document.getElementById("playerName").value = "";
+    pName = "";
+    submit = false;
+    console.log("clicked")
 });
